@@ -11,9 +11,15 @@ public interface AgendaService {
 
     AgendaEntity buscarAgendaPorId(Long id) throws Exception;
 
+    List<AgendaEntity> buscarAgendaPorAlunoId(Long id) throws Exception;
+
+    List<AgendaEntity> buscarAgendaPorTutorId(Long id) throws Exception;
+
     AgendaEntity criarAgenda(AgendaEntity agenda) throws Exception;
 
     AgendaEntity atualizarAgenda(Long id, AgendaEntity agenda) throws Exception;
 
     void deletarAgenda(Long id) throws Exception;
+
 }
+

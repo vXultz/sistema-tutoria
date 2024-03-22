@@ -30,6 +30,18 @@ public class AgendaController {
         return service.buscarAgendaPorId(id);
     }
 
+    @GetMapping("aluno-id/{id}")
+    public ResponseEntity<List<AgendaEntity>> getAlunoId(@PathVariable Long id) throws Exception {
+        List<AgendaEntity> agendas = service.buscarAgendaPorAlunoId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(agendas);
+    }
+
+    @GetMapping("tutor-id/{id}")
+    public ResponseEntity<List<AgendaEntity>> getTutorId(@PathVariable Long id) throws Exception {
+        List<AgendaEntity> agendas = service.buscarAgendaPorTutorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(agendas);
+    }
+
     @PostMapping
     public ResponseEntity<AgendaEntity> post(@RequestBody AgendaEntity agenda) throws Exception {
         AgendaEntity agendas = service.criarAgenda(agenda);

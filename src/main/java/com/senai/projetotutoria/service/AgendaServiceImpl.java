@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgendaServiceImpl implements AgendaService {
@@ -32,6 +33,24 @@ public class AgendaServiceImpl implements AgendaService {
     @Override
     public AgendaEntity buscarAgendaPorId(Long id) {
         return agendaRepository.findById(id).orElseThrow(() -> new NotFoundException("Agendamento não encontrado."));
+    }
+
+    @Override
+    public List<AgendaEntity> buscarAgendaPorAlunoId(Long id) {
+        List<AgendaEntity> agendas = agendaRepository.findByAlunoIdOrderByData(id);
+        if (agendas.isEmpty()) {
+            throw new NotFoundException("Nenhuma agenda com este ID de aluno encontrada");
+        }
+        return agendas;
+    }
+
+    @Override
+    public List<AgendaEntity> buscarAgendaPorTutorId(Long id) throws Exception {
+        List<AgendaEntity> agendas = agendaRepository.findByTutorIdOrderByData(id);
+        if (agendas.isEmpty()) {
+            throw new NotFoundException("Nenhuma agenda com este ID de tutor encontrada");
+        }
+        return agendas;
     }
 
     @Override
