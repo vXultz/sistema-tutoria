@@ -13,7 +13,11 @@ public interface AgendaService {
 
     List<AgendaEntity> buscarAgendaPorAlunoId(Long id) throws Exception;
 
+    List<AgendaEntity> buscarProximosAgendamentosPorAlunoId(Long id) throws Exception;
+
     List<AgendaEntity> buscarAgendaPorTutorId(Long id) throws Exception;
+
+    List<AgendaEntity> buscarProximosAgendamentosPorTutorId(Long id) throws Exception;
 
     AgendaEntity criarAgenda(AgendaEntity agenda) throws Exception;
 

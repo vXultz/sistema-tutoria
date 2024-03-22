@@ -7,6 +7,7 @@ import com.senai.projetotutoria.repository.AgendaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,12 +46,24 @@ public class AgendaServiceImpl implements AgendaService {
     }
 
     @Override
+    public List<AgendaEntity> buscarProximosAgendamentosPorAlunoId(Long id) throws Exception {
+        LocalDate data = LocalDate.now();
+        return agendaRepository.findByAlunoIdAndDataAfterOrderByData(id, data);
+    }
+
+    @Override
     public List<AgendaEntity> buscarAgendaPorTutorId(Long id) throws Exception {
         List<AgendaEntity> agendas = agendaRepository.findByTutorIdOrderByData(id);
         if (agendas.isEmpty()) {
             throw new NotFoundException("Nenhuma agenda com este ID de tutor encontrada");
         }
         return agendas;
+    }
+
+    @Override
+    public List<AgendaEntity> buscarProximosAgendamentosPorTutorId(Long id) throws Exception {
+        LocalDate data = LocalDate.now();
+        return agendaRepository.findByTutorIdAndDataAfterOrderByData(id, data);
     }
 
     @Override

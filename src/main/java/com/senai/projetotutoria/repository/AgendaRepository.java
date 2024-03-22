@@ -4,6 +4,7 @@ import com.senai.projetotutoria.entity.AgendaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,9 @@ public interface AgendaRepository extends JpaRepository<AgendaEntity, Long> {
 
     List<AgendaEntity> findByAlunoIdOrderByData(Long id);
 
+    List<AgendaEntity> findByAlunoIdAndDataAfterOrderByData(Long id, LocalDate data);
+
     List<AgendaEntity> findByTutorIdOrderByData(Long id);
 
+    List<AgendaEntity> findByTutorIdAndDataAfterOrderByData(Long id, LocalDate data);
 }

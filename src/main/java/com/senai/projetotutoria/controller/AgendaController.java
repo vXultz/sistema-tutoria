@@ -36,10 +36,22 @@ public class AgendaController {
         return ResponseEntity.status(HttpStatus.OK).body(agendas);
     }
 
+    @GetMapping("/proximos-agendamentos/aluno-id/{id}")
+    public ResponseEntity<List<AgendaEntity>> getProximosAgendamentosDoAluno(@PathVariable Long id) throws Exception {
+        List<AgendaEntity> proximosAgendamentos = service.buscarProximosAgendamentosPorAlunoId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(proximosAgendamentos);
+    }
+
     @GetMapping("tutor-id/{id}")
     public ResponseEntity<List<AgendaEntity>> getTutorId(@PathVariable Long id) throws Exception {
         List<AgendaEntity> agendas = service.buscarAgendaPorTutorId(id);
         return ResponseEntity.status(HttpStatus.OK).body(agendas);
+    }
+
+    @GetMapping("/proximos-agendamentos/tutor-id/{id}")
+    public ResponseEntity<List<AgendaEntity>> getProximosAgendamentosDoTutor(@PathVariable Long id) throws Exception {
+        List<AgendaEntity> proximosAgendamentos = service.buscarProximosAgendamentosPorTutorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(proximosAgendamentos);
     }
 
     @PostMapping
