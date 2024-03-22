@@ -2,6 +2,7 @@ package com.senai.projetotutoria.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Table(name = "alunos")
@@ -12,5 +13,6 @@ public class AlunoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     private String nome;
 }

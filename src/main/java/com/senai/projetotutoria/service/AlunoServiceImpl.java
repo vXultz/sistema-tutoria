@@ -32,20 +32,20 @@ public class AlunoServiceImpl implements AlunoService{
     }
 
     @Override
-    public AlunoEntity criarAluno(AlunoEntity aluno) throws Exception {
+    public AlunoEntity criarAluno(AlunoEntity aluno) {
         aluno.setId(null);
         return alunoRepository.save(aluno);
     }
 
     @Override
-    public AlunoEntity atualizarAluno(Long id, AlunoEntity aluno) throws Exception {
+    public AlunoEntity atualizarAluno(Long id, AlunoEntity aluno) {
         AlunoEntity entity = buscarAlunoPorId(id);
         entity.setNome(aluno.getNome());
         return alunoRepository.save(entity);
     }
 
     @Override
-    public void deletarAluno(Long id) throws Exception {
+    public void deletarAluno(Long id) {
         AlunoEntity entity = buscarAlunoPorId(id);
         alunoRepository.delete(entity);
     }

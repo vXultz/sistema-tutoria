@@ -3,6 +3,8 @@ package com.senai.projetotutoria.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "agendas")
 @Data
@@ -20,8 +22,9 @@ public class AgendaEntity {
     @JoinColumn(name = "tutor_id")
     private TutorEntity tutor;
 
-    private String data;
+    private LocalDate data;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
     private String tema;
     private String descricao;

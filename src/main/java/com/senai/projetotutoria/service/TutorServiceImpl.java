@@ -18,8 +18,8 @@ public class TutorServiceImpl implements TutorService{
     }
 
     @Override
-    public List<TutorEntity> listarTutors(TutorFiltro filtro) {
-        if (StringUtils.hasText(filtro.getNome()) && StringUtils.hasText(filtro.getEspecialidade())) {
+    public List<TutorEntity> listarTutores(TutorFiltro filtro) {
+        if (StringUtils.hasText(filtro.getNome())) {
             return tutorRepository.findByNomeContainingIgnoreCase(filtro.getNome());
         } else if (StringUtils.hasText(filtro.getEspecialidade())) {
             return tutorRepository.findByEspecialidadeContainingIgnoreCase(filtro.getEspecialidade());

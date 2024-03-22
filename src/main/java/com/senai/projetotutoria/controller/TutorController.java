@@ -22,8 +22,8 @@ public class TutorController {
 
     @GetMapping
     public ResponseEntity<List<TutorEntity>> get(TutorFiltro filtro) {
-        List<TutorEntity> tutors = service.listarTutors(filtro);
-        return ResponseEntity.status(HttpStatus.OK).body(tutors);
+        List<TutorEntity> tutores = service.listarTutores(filtro);
+        return ResponseEntity.status(HttpStatus.OK).body(tutores);
     }
 
     @GetMapping("{id}")
@@ -33,8 +33,8 @@ public class TutorController {
 
     @PostMapping
     public ResponseEntity<TutorEntity> post(@RequestBody TutorEntity tutor) throws Exception {
-        TutorEntity tutors = service.criarTutor(tutor);
-        return ResponseEntity.status(HttpStatus.CREATED).body(tutors);
+        TutorEntity tutores = service.criarTutor(tutor);
+        return ResponseEntity.status(HttpStatus.CREATED).body(tutores);
     }
 
     @PutMapping("{id}")

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TutorService {
 
-    List<TutorEntity> listarTutors(TutorFiltro filtro);
+    List<TutorEntity> listarTutores(TutorFiltro filtro);
 
     TutorEntity buscarTutorPorId(Long id) throws Exception;
 
